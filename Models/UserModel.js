@@ -1,24 +1,20 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 // Schema is an object(class) in mongoose
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
-    trim: true,
-    required: true,
 
-    unique: true,
+    required: true,
   },
   email: {
     type: String,
-    trim: true,
+
     required: true,
-    unique: true,
   },
   firstName: {
     type: String,
     required: true,
-    trim: true,
   },
   lastName: {
     type: String,
@@ -37,6 +33,4 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model("User", UserSchema)
 // to activate schema, we use mongoose.model function with params
 // reference of schema and the schema object itself
-module.exports = {
-  User,
-}
+export default User

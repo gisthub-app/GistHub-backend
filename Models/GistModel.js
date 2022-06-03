@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 // Schema is an object(class) in mongoose
 const GistSchema = new mongoose.Schema({
@@ -15,6 +15,4 @@ const GistSchema = new mongoose.Schema({
 const Gist = mongoose.model("Gist", GistSchema)
 // to activate schema, we use mongoose.model function with params
 // reference of schema and the schema object itself
-module.exports = {
-  Gist,
-}
+export default Gist
