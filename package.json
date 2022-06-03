@@ -1,0 +1,37 @@
+{
+  "name": "gisthub-backend",
+  "version": "1.0.0",
+  "description": "Gisthub's backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r esm index.js",
+    "data:import": "node -r esm seeder.js",
+    "data:destroy": "node -r esm seeder.js -d"
+  },
+  "author": "Gaurang Ruparelia",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "bcrypt": "^5.0.1",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.1",
+    "esm": "^3.2.25",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "koa-mongo": "^1.9.3",
+    "koa-mount": "^4.0.0",
+    "koa-passport": "^4.1.4",
+    "koa-range": "^0.3.0",
+    "koa-router": "^10.1.1",
+    "koa-send": "^5.0.1",
+    "koa-session": "^6.2.0",
+    "koa-simple-ratelimit": "^5.1.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.0.6",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "passport-local": "^1.0.0"
+  }
+}
