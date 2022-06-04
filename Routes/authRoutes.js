@@ -6,20 +6,12 @@ import {
 const router = new Router()
 
 // @desc   Login a user
-// @route  POST /api/login
-// @access Public
-router.get("/test", (ctx) => {
-  ctx.status = 200
-  ctx.body = "HI"
-})
-
-// @desc   Login a user
-// @route  POST /api/login
+// @route  POST /login
 // @access Public
 router.post("/login", loginController)
 
 // @desc   Register a user
-// @route  POST /api/register
+// @route  POST /register
 // @access Public
 router.post("/register", registerController)
 
