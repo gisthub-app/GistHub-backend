@@ -101,7 +101,7 @@ app.use(async (ctx, next) => {
 
 // import all routes in one go
 readdirSync("./Routes").map((route) => {
-  console.log(route)
+  // console.log(route)
   app.use(require(`./Routes/${route}`).routes()).use(router.allowedMethods())
 })
 

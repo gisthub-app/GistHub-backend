@@ -44,7 +44,9 @@ passport.use(
     },
     async (username, password, done) => {
       let user = null
+      console.log(username)
       user = await User.findOne({ username })
+      console.log(user)
       if (!user) {
         done({ type: "email", message: "No such user found" }, false)
         return
@@ -80,6 +82,7 @@ passport.use(
     },
     async (req, userName, password, done) => {
       let user = null
+      console.log(userName)
       user = await User.findOne({ userName })
       if (user) {
         done({ type: "email", message: "Email already exists" }, false)

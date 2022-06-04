@@ -2,11 +2,9 @@ import mongoose from "mongoose"
 
 // Schema is an object(class) in mongoose
 const GistSchema = new mongoose.Schema({
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-  title: { type: String, required: true },
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  title: String,
+  description: String,
   permissions: [{ type: String }],
   content: [new mongoose.Schema({ type: String, payload: String })],
   isPrivate: { type: Boolean, default: true },
