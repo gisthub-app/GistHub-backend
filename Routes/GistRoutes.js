@@ -3,6 +3,8 @@ import {
   testController,
   myGistsController,
   createGistController,
+  viewGistController,
+  updateGistController,
 } from "../Controllers/GistController.js"
 const router = new Router()
 
@@ -12,6 +14,7 @@ router.post("/myGists", myGistsController)
 
 router.post("/createGist", createGistController)
 
-// router.post("/updateGist", updateGistController)
+router.post("/viewGist", viewGistController)
+router.post("/updateGist", updateGistController)
 
 module.exports = router

@@ -36,3 +36,59 @@ export const createGistController = async (ctx) => {
     ctx.throw(401, "You are not authenticated")
   }
 }
+
+export const updateGistController = async (ctx) => {
+  const { user } = ctx.request.body
+  if (user) {
+    const { gistId } = ctx.request.body
+    const gist = await Gist.findById(gistId)
+
+    if (gist.owner !== user.id) {
+      ctx.throw(403, "You do not own this gist")
+    }
+
+    delete ctx.request.body["gistId"]
+
+    await Gist.updateOne({ _id: gistId }, { $set: ctx.request.body })
+
+    ctx.body = {
+      message: "Successfully updated",
+    }
+  } else {
+    ctx.throw(401, "You are not authenticated")
+  }
+}
+
+export const viewGistController = async (ctx) => {
+  const { gistId, user } = ctx.request.body
+  const gist = await Gist.findById(gistId)
+  if (!gist) {
+    ctx.throw(404, "Gist not found")
+  }
+  // check if gist is public
+  if (!gist.isPrivate) {
+    ctx.body = {
+      gist: gist,
+    }
+    return
+  } else {
+    if (user) {
+      // gist is private
+      // check if user owns the gist
+
+      if (
+        user.id === gist.owner._id.toString() ||
+        gist.permissions.includes(user.username)
+      ) {
+        ctx.body = {
+          gist: gist,
+        }
+        return
+      } else {
+        ctx.throw(403, "You do not have permission to view this")
+      }
+    } else {
+      ctx.throw(401, "You are not authenticated")
+    }
+  }
+}
