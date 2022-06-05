@@ -21,7 +21,11 @@ const users = [
     email: "gaurang@example.com",
     firstName: "Gaurang",
     lastName: "Ruparelia",
-    gists: [],
+    gists: [
+      "629b5c96255645ef32c48368",
+      "629b5c96255645ef32c48363",
+      "629b5c96255645ef32c4835e",
+    ],
     password: bcrypt.hashSync("123456", 10),
   },
 ]

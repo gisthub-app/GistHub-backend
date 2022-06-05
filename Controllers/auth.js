@@ -57,7 +57,7 @@ passport.use(
         done(null, {
           id: user.id,
           email: user.email,
-          userName: user.userName,
+          username: user.username,
           firstName: user.firstName,
           lastName: user.lastName,
         })
@@ -80,11 +80,12 @@ passport.use(
       passwordField: "password",
       passReqToCallback: true,
     },
-    async (req, userName, password, done) => {
+    async (req, username, password, done) => {
       let user = null
-      console.log(userName)
-      user = await User.findOne({ userName })
+      console.log(username)
+      user = await User.findOne({ username })
       if (user) {
+        console.log(user)
         done({ type: "email", message: "Email already exists" }, false)
         return
       }
@@ -98,7 +99,7 @@ passport.use(
       user = new User({
         email,
         password: encryptedPassword,
-        userName,
+        username,
         firstName,
         lastName,
       })
@@ -109,7 +110,7 @@ passport.use(
         id: user.id,
         email: user.email,
         firstName: user.firstName,
-        userName: user.userName,
+        username: user.username,
         lastName: user.lastName,
       })
     }
@@ -123,6 +124,7 @@ exports.getLoggedUser = async (ctx) => {
     user = await User.findById(reqUserId)
     if (user) {
       delete user.password
+      console.log("logged in", user)
       ctx.response.body = user
     } else {
       const statusCode = 500
