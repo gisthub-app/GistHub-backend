@@ -1,5 +1,5 @@
 {
-  "name": "GistHub-Backend",
+  "name": "GistHub-backend",
   "version": "1.0.0",
   "description": "GistHub's backend",
   "main": "index.js",
