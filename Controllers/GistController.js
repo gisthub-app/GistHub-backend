@@ -74,9 +74,9 @@ export const updateGistController = async (ctx) => {
 
 export const viewGistController = async (ctx) => {
   const { gistId, user } = ctx.request.body
-  console.log(gistId, user)
+  // console.log(gistId, user)
   const gist = await Gist.findById(gistId)
-  console.log(gist)
+  // console.log(gist)
 
   if (!gist) {
     ctx.throw(404, "Gist not found")

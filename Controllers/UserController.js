@@ -16,7 +16,7 @@ export const getAllUsersController = async (ctx) => {
 export const getUserByIdController = async (ctx) => {
   console.log()
   const { _id } = ctx.request.body
-  console.log(_id)
+  // console.log(_id)
   const user = await User.findById({ _id: _id })
   ctx.body = {
     user: user,

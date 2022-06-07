@@ -44,7 +44,7 @@ passport.use(
     },
     async (username, password, done) => {
       let user = null
-      console.log(username)
+      // console.log(username)
       user = await User.findOne({ username })
       if (!user) {
         user = await User.findOne({ email: username })
@@ -84,10 +84,10 @@ passport.use(
     },
     async (req, username, password, done) => {
       let user = null
-      console.log(username)
+      // console.log(username)
       user = await User.findOne({ username })
       if (user) {
-        console.log(user)
+        // console.log(user)
         done({ type: "email", message: "Email already exists" }, false)
         return
       }
@@ -96,7 +96,7 @@ passport.use(
       const salt = await bcrypt.genSalt(10)
       const encryptedPassword = await bcrypt.hash(password, salt)
 
-      console.log(firstName)
+      // console.log(firstName)
 
       user = new User({
         email,
@@ -126,7 +126,7 @@ exports.getLoggedUser = async (ctx) => {
     user = await User.findById(reqUserId)
     if (user) {
       delete user.password
-      console.log("logged in", user)
+      // console.log("logged in", user)
       ctx.response.body = user
     } else {
       const statusCode = 500
