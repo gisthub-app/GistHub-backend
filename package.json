@@ -4,7 +4,7 @@
   "description": "GistHub's backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node -r esm index.js",
     "dev-start": "nodemon -r esm index.js",
     "data:import": "node -r esm seeder.js",
     "data:destroy": "node -r esm seeder.js -d"
