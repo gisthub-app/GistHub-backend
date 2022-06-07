@@ -64,6 +64,34 @@ const gists = [
     ],
     isPrivate: false,
   },
+  {
+    owner: "629c1ecc1ea311dfc705f806",
+    title: "Flutter setup",
+    permissions: ["john"],
+    content: [
+      {
+        type: "Code",
+        payload: "int increment(int x) {  return (x+1); }",
+        language: "C++",
+      },
+      {
+        type: "Text",
+        payload: "Functors in C++",
+        language: "English",
+      },
+      {
+        type: "Code",
+        payload: "int data[5] = {0, 1, 2, 3, 4};",
+        language: "C++",
+      },
+      {
+        type: "Text",
+        payload: "Arrays in C++",
+        language: "English",
+      },
+    ],
+    isPrivate: false,
+  },
 ]
 
 export default gists

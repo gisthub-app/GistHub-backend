@@ -30,7 +30,19 @@ export const createGistController = async (ctx) => {
     await User.findByIdAndUpdate(user.id, { $push: { gists: newGist.id } })
     ctx.body = {
       message: "Gist created succesfully",
-      id: newGist._id,
+      _id: newGist._id,
+    }
+  } else {
+    ctx.throw(401, "You are not authenticated")
+  }
+}
+export const deleteGistController = async (ctx) => {
+  const { user, _id } = ctx.request.body
+  if (user) {
+    await Gist.deleteOne({ _id: _id })
+    await User.findByIdAndUpdate(user.id, { $pull: { gists: _id } })
+    ctx.body = {
+      message: "Gist deleted succesfully",
     }
   } else {
     ctx.throw(401, "You are not authenticated")
@@ -42,8 +54,9 @@ export const updateGistController = async (ctx) => {
   if (user) {
     const { gistId } = ctx.request.body
     const gist = await Gist.findById(gistId)
-
-    if (gist.owner !== user.id) {
+    // console.log(user.id)
+    // console.log(gist.owner.toString())
+    if (gist.owner.toString() !== user.id) {
       ctx.throw(403, "You do not own this gist")
     }
 
@@ -61,7 +74,10 @@ export const updateGistController = async (ctx) => {
 
 export const viewGistController = async (ctx) => {
   const { gistId, user } = ctx.request.body
+  console.log(gistId, user)
   const gist = await Gist.findById(gistId)
+  console.log(gist)
+
   if (!gist) {
     ctx.throw(404, "Gist not found")
   }
