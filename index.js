@@ -80,7 +80,7 @@ Express session knows that browser has sent requests before.
 */
 app.use(passport.session())
 
-const auth = require("./controllers/auth")
+const auth = require("./Controllers/auth")
 
 const router = new Router()
 
