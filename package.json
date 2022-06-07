@@ -1,7 +1,7 @@
 {
-  "name": "gisthub-backend",
+  "name": "GistHub-backend",
   "version": "1.0.0",
-  "description": "Gisthub's backend",
+  "description": "GistHub's backend",
   "main": "index.js",
   "scripts": {
     "start": "nodemon -r esm index.js",

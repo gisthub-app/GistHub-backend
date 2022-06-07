@@ -46,7 +46,9 @@ passport.use(
       let user = null
       console.log(username)
       user = await User.findOne({ username })
-      console.log(user)
+      if (!user) {
+        user = await User.findOne({ email: username })
+      }
       if (!user) {
         done({ type: "email", message: "No such user found" }, false)
         return
